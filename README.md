@@ -19,7 +19,7 @@
 
 ## About This Resource
 
-<a href="https://streamable.com/i4g411">Preview Resource</a>
+<a href="https://streamable.com/pyy0tr">Preview Resource</a>
     
 This is simple Car Wash resource with business system and Responsive UI.
 
