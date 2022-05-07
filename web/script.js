@@ -62,18 +62,18 @@ $(function () {
     document.onkeyup = function (data) {
         if (data.which == 27) {
             $("html").fadeOut("slow");
-            $.post('https://iCarWash/close', JSON.stringify({}));
+            $.post('https://id_carwash/close', JSON.stringify({}));
             return
         }
     };
 
     $("#button").click(function () {
-        $.post('https://iCarWash/wash', JSON.stringify({}));
+        $.post('https://id_carwash/wash', JSON.stringify({}));
         return
     })
 
     $("#buttonowner").click(function () {
-        $.post('https://iCarWash/ownermenu', JSON.stringify({}));
+        $.post('https://id_carwash/ownermenu', JSON.stringify({}));
         return
     })
 })
