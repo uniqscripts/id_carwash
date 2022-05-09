@@ -23,7 +23,7 @@ ui_page "web/index.html"
 files {
     'web/index.html',
     'web/script.js',
-	'web/img/*.png',
+    'web/img/*.png',
     'web/style.css',
 }
 
