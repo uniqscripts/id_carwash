@@ -13,9 +13,9 @@ end)
 
 ESX.RegisterServerCallback('iCarWash:getOwnername', function(source, cb, broj)
     local xPlayer = ESX.GetPlayerFromId(source)
-
-    MySQL.Async.fetchScalar('SELECT * FROM carwash WHERE owner = @owner ', {
-      ["@owner"] = xPlayer.identifier,
+    local ownername
+        
+    MySQL.Async.fetchScalar('SELECT * FROM carwash WHERE owner = owner ', {
     }, function(owner)
       if owner then
         local res = MySQL.Sync.fetchAll('SELECT * FROM carwash')
@@ -24,13 +24,14 @@ ESX.RegisterServerCallback('iCarWash:getOwnername', function(source, cb, broj)
             hasowner = val.owner~=nil and val.owner~=""
             if hasowner and not cache[val.owner] then cache[val.owner]=MySQL.Sync.fetchAll("SELECT firstname,lastname FROM users WHERE identifier = @identifier",{["@identifier"]=val.owner})[1] end
             if val.owner~=nil then cache[val.owner] = cache[val.owner]~=nil and cache[val.owner] or {firstname="N/A",lastname="N/A"} end
-            local ownername = cache[val.owner].firstname.." "..cache[val.owner].lastname or "Nobody"
+            ownername = cache[val.owner].firstname.." "..cache[val.owner].lastname or "Nobody"
         end
       
         cb(ownername)
       end
     end)
 end)
+
 
 ESX.RegisterServerCallback('iCarWash:getOwner', function(source, cb)
     local xPlayer = ESX.GetPlayerFromId(source)
