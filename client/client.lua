@@ -18,20 +18,20 @@ Citizen.CreateThread(function()
         local ped = PlayerPedId()
 	    local pedCoords = GetEntityCoords(ped)
         local vehicle = GetVehiclePedIsIn(ped, false)
-
-		if Vdist(pedCoords.x, pedCoords.y, pedCoords.z, Config.CarWash) < Config.MarkerDistance and not washing and not inMenu then
-            sleep = 5
-            DrawMarker(Config.Marker.Type, Config.CarWash, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, Config.Marker.ColorR, Config.Marker.ColorG, Config.Marker.ColorB, 50, false, true, 2, nil, nil, false)
+		for _,i in pairs(Config.CarWash) do
+		    if Vdist(pedCoords.x, pedCoords.y, pedCoords.z, i) < Config.MarkerDistance and not washing and not inMenu then
+              sleep = 5
+              DrawMarker(Config.Marker.Type, i, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, Config.Marker.ColorR, Config.Marker.ColorG, Config.Marker.ColorB, 50, false, true, 2, nil, nil, false)
+            end
+	
+            if Vdist(pedCoords.x, pedCoords.y, pedCoords.z, i) < Config.TextUIDistance and (GetPedInVehicleSeat(vehicle, -1) == ped) and not washing and not inMenu then
+                sleep = 5
+                inZone = true
+                if IsControlJustPressed(0, 38) then
+                    showUI()
+                end
+            end
         end
-
-        if Vdist(pedCoords.x, pedCoords.y, pedCoords.z, Config.CarWash) < Config.TextUIDistance and (GetPedInVehicleSeat(vehicle, -1) == ped) and not washing and not inMenu then
-           sleep = 5
-           inZone = true
-           if IsControlJustPressed(0, 38) then
-               showUI()
-           end
-        end
-        
         if not enteredZone and inZone then
             lib.showTextUI('[E] - ' .. Config.Translation.AccessCarWash, {
                 position = "top-center",
@@ -48,16 +48,18 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-    local blip = AddBlipForCoord(Config.CarWash)
-    SetBlipSprite(blip, Config.Blip.ID)
-    SetBlipDisplay(blip, 4)
-    SetBlipScale(blip, Config.Blip.Size)
-    SetBlipColour(blip, Config.Blip.Colour)
-    SetBlipAsShortRange(blip, true)
-    SetBlipHighDetail(blip, true)
-    BeginTextCommandSetBlipName("STRING")
-    AddTextComponentString(Config.Blip.Display)
-    EndTextCommandSetBlipName(blip)
+    for _,i in pairs(Config.CarWash) do
+        local blip = AddBlipForCoord(Config.CarWash)
+        SetBlipSprite(blip, Config.Blip.ID)
+        SetBlipDisplay(blip, 4)
+        SetBlipScale(blip, Config.Blip.Size)
+        SetBlipColour(blip, Config.Blip.Colour)
+        SetBlipAsShortRange(blip, false)
+        SetBlipHighDetail(blip, true)
+        BeginTextCommandSetBlipName("STRING")
+        AddTextComponentString(Config.Blip.Display)
+        EndTextCommandSetBlipName(blip)
+    end
 end)
 
 -- FUNCTIONS
