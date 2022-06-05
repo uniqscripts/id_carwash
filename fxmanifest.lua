@@ -13,7 +13,7 @@ client_scripts {
 }
 
 server_scripts {
-    '@mysql-async/lib/MySQL.lua',
+    '@oxmysql/lib/MySQL.lua',
     'server/*.lua',
     'shared/*.lua',
 }
@@ -30,6 +30,7 @@ files {
 shared_script '@ox_lib/init.lua' -- Used for notifications, progressbar, text UI and context menu, can be changed in client side (if you need help read README.md, but I recommend using overextended resources - https://github.com/overextended)
 
 dependencies {
+	'oxmysql',
 	'/onesync',
 	'es_extended'
 }
