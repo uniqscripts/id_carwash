@@ -15,10 +15,10 @@ ESX.RegisterServerCallback('iCarWash:getOwnername', function(source, cb, broj)
     local xPlayer = ESX.GetPlayerFromId(source)
     local ownername
         
-    MySQL.Async.fetchScalar('SELECT * FROM carwash WHERE owner = owner', {
+    MySQL.query.await('SELECT * FROM carwash WHERE owner = owner', {
     }, function(owner)
       if owner then
-        local res = MySQL.Sync.fetchAll('SELECT * FROM carwash')
+        local res = MySQL.query.await('SELECT * FROM carwash')
                     
         for key, val in ipairs(res) do
             hasowner = val.owner~=nil and val.owner~=""
@@ -34,9 +34,7 @@ end)
 
 ESX.RegisterServerCallback('iCarWash:getOwner', function(source, cb)
     local xPlayer = ESX.GetPlayerFromId(source)
-    MySQL.Async.fetchScalar('SELECT * FROM carwash WHERE owner = @owner ', {
-      ["@owner"] = xPlayer.identifier,
-    }, function(owner)
+    MySQL.query.await('SELECT * FROM carwash WHERE owner = ?', {xPlayer.identifier}, function(owner)
   
     cb(owner)
   end)
@@ -44,9 +42,7 @@ end)
 
 ESX.RegisterServerCallback('iCarWash:getBusinessMoney', function(source, cb)
     local xPlayer = ESX.GetPlayerFromId(source)
-    MySQL.Async.fetchScalar('SELECT money FROM carwash WHERE owner = @owner ', {
-      ["@owner"] = xPlayer.identifier,
-    }, function(businesscash)
+    MySQL.scalar('SELECT money FROM carwash WHERE owner = ? ', {xPlayer.identifier} , function(businesscash)
   
     cb(businesscash)
   end)
@@ -58,31 +54,19 @@ AddEventHandler("iCarWash:removeMoney", function(amount)
 
     xPlayer.removeMoney(amount)
 
-    MySQL.Sync.execute(
-      'UPDATE carwash SET money = money + @amount',
-      {
-          ["@amount"] = amount
-      }
-    )
+    MySQL.update('UPDATE carwash SET money = money + ?',{amount})
 end)
 
 RegisterServerEvent("iCarWash:addMoney")
 AddEventHandler("iCarWash:addMoney", function(amount)
     local xPlayer = ESX.GetPlayerFromId(source)
 
-    MySQL.Async.fetchScalar('SELECT money FROM carwash WHERE owner = @owner', {
-        ["@owner"] = xPlayer.identifier,
-    }, function(money)
+    MySQL.scalar('SELECT money FROM carwash WHERE owner = ?', {xPlayer.identifier}, function(money)
         if amount > 0 then
             if amount <= tonumber(money) then
                 xPlayer.addMoney(amount)
 
-                MySQL.Sync.execute(
-                  'UPDATE carwash SET money = money - @amount',
-                  {
-                      ["@amount"] = amount
-                  }
-                )
+                MySQL.update('UPDATE carwash SET money = money - ?', {amount})
             end
         end
     end)
