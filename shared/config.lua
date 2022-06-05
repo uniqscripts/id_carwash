@@ -1,10 +1,9 @@
 Config = {}
 
-
 Config.CarWash = {
-		  vector3(-699.8639, -932.8102, 18.3358),
-		  vector3(20.68, -1391.85, 29.32),
-		  vector3(167.79, -1715.69, 29.29),
+	vector3(-699.8639, -932.8102, 18.3358),
+	vector3(20.68, -1391.85, 29.32),
+	vector3(167.79, -1715.69, 29.29),
 }
 
 Config.Blip = { -- https://docs.fivem.net/docs/game-references/blips/
