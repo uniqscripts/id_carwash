@@ -25,7 +25,7 @@ GlobalState.MarkerDistance = 16 -- Distance for displaying marker
 GlobalState.TextUIDistance = 4 -- Distance for displaying ox_lib Text UI
 GlobalState.TextUIicon = "car" -- Icon for ox_lib Text UI (font awesome icons - https://fontawesome.com/icons)
 
-Config.OwnerCategoryEveryone = false -- If everyone can see owner category (access button, money in business) / false - only business owner can see owner category
+GlobalState.OwnerCategoryEveryone = false -- If everyone can see owner category (access button, money in business) / false - only business owner can see owner category
 
 GlobalState.Translation = {
     -- Progress Bar
