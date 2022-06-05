@@ -18,13 +18,13 @@ Citizen.CreateThread(function()
         local ped = PlayerPedId()
 	    local pedCoords = GetEntityCoords(ped)
         local vehicle = GetVehiclePedIsIn(ped, false)
-		for _,i in pairs(Config.CarWash) do
-		    if Vdist(pedCoords.x, pedCoords.y, pedCoords.z, i) < Config.MarkerDistance and not washing and not inMenu then
+		for _,i in pairs(GlobalState.CarWash) do
+		    if Vdist(pedCoords.x, pedCoords.y, pedCoords.z, i) < GlobalState.MarkerDistance and not washing and not inMenu then
               sleep = 5
-              DrawMarker(Config.Marker.Type, i, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, Config.Marker.ColorR, Config.Marker.ColorG, Config.Marker.ColorB, 50, false, true, 2, nil, nil, false)
+              DrawMarker(GlobalState.Marker.Type, i, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, GlobalState.Marker.ColorR, GlobalState.Marker.ColorG, GlobalState.Marker.ColorB, 50, false, true, 2, nil, nil, false)
             end
 	
-            if Vdist(pedCoords.x, pedCoords.y, pedCoords.z, i) < Config.TextUIDistance and (GetPedInVehicleSeat(vehicle, -1) == ped) and not washing and not inMenu then
+            if Vdist(pedCoords.x, pedCoords.y, pedCoords.z, i) < GlobalState.TextUIDistance and (GetPedInVehicleSeat(vehicle, -1) == ped) and not washing and not inMenu then
                 sleep = 5
                 inZone = true
                 if IsControlJustPressed(0, 38) then
@@ -33,9 +33,9 @@ Citizen.CreateThread(function()
             end
         end
         if not enteredZone and inZone then
-            lib.showTextUI('[E] - ' .. Config.Translation.AccessCarWash, {
+            lib.showTextUI('[E] - ' .. GlobalState.Translation.AccessCarWash, {
                 position = "top-center",
-                icon = Config.TextUIicon,
+                icon = GlobalState.TextUIicon,
             })                
             enteredZone = true
         elseif enteredZone and not inZone then
@@ -48,16 +48,16 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-    for _,i in pairs(Config.CarWash) do
-        local blip = AddBlipForCoord(Config.CarWash)
-        SetBlipSprite(blip, Config.Blip.ID)
+    for _,i in pairs(GlobalState.CarWash) do
+        local blip = AddBlipForCoord(GlobalState.CarWash)
+        SetBlipSprite(blip, GlobalState.Blip.ID)
         SetBlipDisplay(blip, 4)
-        SetBlipScale(blip, Config.Blip.Size)
-        SetBlipColour(blip, Config.Blip.Colour)
+        SetBlipScale(blip, GlobalState.Blip.Size)
+        SetBlipColour(blip, GlobalState.Blip.Colour)
         SetBlipAsShortRange(blip, false)
         SetBlipHighDetail(blip, true)
         BeginTextCommandSetBlipName("STRING")
-        AddTextComponentString(Config.Blip.Display)
+        AddTextComponentString(GlobalState.Blip.Display)
         EndTextCommandSetBlipName(blip)
     end
 end)
@@ -66,11 +66,11 @@ end)
 function washVehicle()
     local ped = PlayerPedId()
     local vehicle = GetVehiclePedIsIn(ped, false)
-    TriggerServerEvent('iCarWash:removeMoney', Config.WashPrice)
+    TriggerServerEvent('iCarWash:removeMoney', GlobalState.WashPrice)
     SetVehicleDirtLevel(vehicle, 0)
     lib.defaultNotify({
-        title = Config.Translation.Title,
-        description = Config.Translation.Message,
+        title = GlobalState.Translation.Title,
+        description = GlobalState.Translation.Message,
         status = 'success'
     })
 end
@@ -91,7 +91,7 @@ function showUI()
                 status = true,
             })
         else
-            if Config.OwnerCategoryEveryone then
+            if GlobalState.OwnerCategoryEveryone then
                 SendNUIMessage({
                     type = "showowner",
                     status = true,
@@ -100,7 +100,7 @@ function showUI()
         end
     end)
 
-    SendNUIMessage({action = 'businesscash', value = Config.WashPrice})
+    SendNUIMessage({action = 'businesscash', value = GlobalState.WashPrice})
 
     ESX.TriggerServerCallback("iCarWash:getBusinessMoney", function(businessmoney)
         SendNUIMessage({action = 'businessmoney', value = businessmoney})
@@ -133,7 +133,7 @@ end)
 RegisterNUICallback("wash", function(data)
     closeUI()
     ESX.TriggerServerCallback('iCarWash:getMoney', function(cash)
-        if cash >= Config.WashPrice then
+        if cash >= GlobalState.WashPrice then
             washing = true
             local ped = PlayerPedId()
             local pedCoords = GetEntityCoords(ped)
@@ -142,8 +142,8 @@ RegisterNUICallback("wash", function(data)
 	        UseParticleFxAssetNextCall("core")
 	        particles2 = StartParticleFxLoopedAtCoord("ent_amb_waterfall_splash_p", pedCoords.x + 2, pedCoords.y, pedCoords.z, 0.0, 0.0, 0.0, 1.0, false, false, false, false)
             if lib.progressBar({
-                duration = Config.WashDuration * 1000,
-                label = Config.Translation.WashingVehicle,
+                duration = GlobalState.WashDuration * 1000,
+                label = GlobalState.Translation.WashingVehicle,
                 useWhileDead = false,
                 canCancel = true,
                 disable = {
@@ -158,8 +158,8 @@ RegisterNUICallback("wash", function(data)
             end
         else
             lib.defaultNotify({
-                title = Config.Translation.Title,
-                description = Config.Translation.notEnoughMoney,
+                title = GlobalState.Translation.Title,
+                description = GlobalState.Translation.notEnoughMoney,
                 status = 'error'
             })
         end
@@ -179,8 +179,8 @@ RegisterNUICallback("ownermenu", function(data)
             end
         else
             lib.defaultNotify({
-                title = Config.Translation.Title,
-                description = Config.Translation.NotOwner,
+                title = GlobalState.Translation.Title,
+                description = GlobalState.Translation.NotOwner,
                 status = 'error'
             })            
         end
