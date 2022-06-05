@@ -28,3 +28,8 @@ files {
 }
 
 shared_script '@ox_lib/init.lua' -- Used for notifications, progressbar, text UI and context menu, can be changed in client side (if you need help read README.md, but I recommend using overextended resources - https://github.com/overextended)
+
+dependencies {
+	'/onesync',
+	'es_extended'
+}
