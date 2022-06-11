@@ -1,0 +1,310 @@
+@import url('https://fonts.cdnfonts.com/css/akrobat');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+	-webkit-user-drag: none;
+  	-khtml-user-drag: none;
+  	-moz-user-drag: none;
+  	-o-user-drag: none;
+}
+
+#container {
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	background: linear-gradient(90.9deg, rgba(96,188,142,0.9) 0%, rgba(108,166,162,0.9) 36.02%, rgba(73,111,149,0.9) 84.1%, rgba(101,109,158,0.9) 100%, rgba(128,128,128,1) 100%);
+	overflow: hidden;
+}
+
+#watersplashes {
+	position: absolute;
+	width: 125.9896vw;
+	height: 123.1481vh;
+	left: -11.1979vw;
+	top: -11.5741vh;
+	overflow: visible;
+}
+
+#headtext {
+	filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 1));
+	left: 39.1667vw;
+	top: 14.7222vh;
+	position: absolute;
+	overflow: visible;
+	width: 21.7188vw;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Akrobat;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 5.5208vw;
+	color: rgba(255,255,255,1);
+}
+
+#owner {
+	left: 39.1667vw;
+	top: 33.7963vh;
+	position: absolute;
+	overflow: visible;
+	width: 8.9583vw;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Akrobat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 2.8646vw;
+	color: rgba(255,255,255,1);
+	letter-spacing: 0.0521vw;
+}
+
+#ownername {
+	filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 1));
+	left: 39.1667vw;
+	top: 38.8889vh;
+	position: absolute;
+	overflow: visible;
+	width: 20.0521vw;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Akrobat;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 3.4375vw;
+	color: rgba(255,255,255,1);
+	transition: 0.75s;
+}
+
+#ownername:hover {
+	transform: scale(1.01);
+}
+
+#button {
+	position: absolute;
+	width: 13.5vw;
+	height: 18.7778vh;
+	left: 43.65vw;
+	top: 68.6111vh;
+	overflow: visible;
+	transition: 0.35s;
+	opacity: 0.8;
+}
+
+#button:hover {
+	opacity: 1.0;
+	transform: scale(1.02);
+}
+
+#buttonshape {
+	fill: rgba(90,210,255,1);
+	stroke: rgba(96,186,232,1);
+	stroke-width: 0.4167vw;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+
+.buttonshape {
+	overflow: visible;
+	position: absolute;
+	width: 13.5vw;
+	height: 8.7778vh;
+	left: 0vw;
+	top: 0vh;
+	transform: matrix(1,0,0,1,0,0);
+}
+
+#buttonwash {
+	filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 1));
+	left: 2.5975vw;
+	top: 2.1000vh;
+	position: absolute;
+	overflow: visible;
+	width: 8.1771vw;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Akrobat;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 1.8646vw;
+	color: rgba(255,255,255,1);
+	letter-spacing: 0.1042vw;
+}
+
+#washyourvehicle {
+	left: 39.9929vw;
+	top: 12.7778vh;
+	position: absolute;
+	overflow: visible;
+	width: 16.8229vw;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Akrobat;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 1.8229vw;
+	color: rgba(219,219,219,1);
+	letter-spacing: 0.0521vw;
+}
+
+#owner_p {
+	left: 47.1354vw;
+	top: 56.7778vh;
+	position: absolute;
+	overflow: visible;
+	width: 5.7813vw;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Akrobat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 2.2917vw;
+	color: rgba(233,233,233,1);
+	letter-spacing: 0.0521vw;
+}
+
+#businesscash {
+	filter: drop-shadow(0px 0px 10px rgba(118, 242, 109, 1));
+	left: 41.5625vw;
+	top: 61.0185vh;
+	position: absolute;
+	overflow: visible;
+	width: 16.9271vw;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Akrobat;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 2.8646vw;
+	color: rgba(118,242,109,1);
+	letter-spacing: 0.0521vw;
+	transition: 0.35s;
+}
+
+#businesscash:hover {
+	transform: scale(1.015);
+}
+
+#businessownersection {
+	position: absolute;
+	width: 17.5vw;
+	height: 32.7778vh;
+	left: 4.3229vw;
+	top: 35.8333vh;
+	overflow: visible;
+}
+
+#buttonowner {
+	position: absolute;
+	width: 13.5vw;
+	height: 8.7778vh;
+	left: 1.8vw;
+	top: 6.8148vh;
+	overflow: visible;
+	transition: 0.35s;
+	opacity: 0.8;
+}
+
+#buttonowner:hover {
+	opacity: 1.0;
+	transform: scale(1.02);
+}
+
+#buttonownershape {
+	fill: rgba(0,190,164,1);
+	stroke: rgba(49,214,192,1);
+	stroke-width: 0.4167vw;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+
+.buttonownershape {
+	overflow: visible;
+	position: absolute;
+	width: 13.5vw;
+	height: 8.7778vh;
+	left: 0vw;
+	top: 0vh;
+	transform: matrix(1,0,0,1,0,0);
+}
+
+#buttonowner_u {
+	filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 1));
+	left: 1.2175vw;
+	top: 2.0000vh;
+	position: absolute;
+	overflow: visible;
+	width: 11.1979vw;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Akrobat;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 1.8646vw;
+	color: rgba(255,255,255,1);
+	letter-spacing: 0.1042vw;
+}
+
+#washyourvehicle_v {
+	left: 3.2292vw;
+	top: 1vh;
+	position: absolute;
+	overflow: visible;
+	width: 11.0938vw;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Akrobat;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 1.8229vw;
+	color: rgba(219,219,219,1);
+	letter-spacing: 0.0521vw;
+}
+
+#businessbalance {
+	left: 4.5438vw;
+	top: 16.8889vh;
+	position: absolute;
+	overflow: visible;
+	width: 7.9687vw;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Akrobat;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 1.8229vw;
+	color: rgba(219,219,219,1);
+	letter-spacing: 0.0521vw;
+}
+
+#businessmoney {
+	filter: drop-shadow(0px 0px 10px rgba(49, 122, 92, 1));
+	left: 1.2625vw;
+	top: 24.963vh;
+	position: absolute;
+	overflow: visible;
+	width: 14.5313vw;
+	height: 4.8148vh;
+	text-align: center;
+	font-family: Akrobat;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 2.2396vw;
+	color: rgb(49, 122, 92);
+	letter-spacing: 0.0521vw;
+	transition: 0.35s;
+}
+
+#businessmoney:hover {
+	transform: scale(1.015);
+}
