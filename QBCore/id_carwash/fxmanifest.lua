@@ -4,8 +4,8 @@ lua54 'yes'
 
 name "id_carwash"
 description "Simple Car Wash resource with business owner system and responsive UI"
-author "grandson#6863"
-version "1.0.0"
+author "zeixna#1636"
+version "1.1.0"
 
 client_scripts {
     'client/*.lua',
