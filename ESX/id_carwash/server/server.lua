@@ -1,7 +1,5 @@
-ESX = nil
+ESX = exports["es_extended"]:getSharedObject()
 local cache = {}
-
-TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 ESX.RegisterServerCallback('iCarWash:getMoney', function(source, cb)
     local xPlayer = ESX.GetPlayerFromId(source)
